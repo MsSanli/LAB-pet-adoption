@@ -240,3 +240,25 @@ const pets = [
       imageUrl: "http://lsae2.iypcdn.com/static//modules/uploads/photos/language1/dino-live-22.jpg?119"
     }
   ];
+
+  const renderToDom = (divId, htmlToRender) => {
+    const selectedDiv = document.querySelector(divId);
+    selectedDiv.innerHTML = htmlToRender;
+  };
+  
+  const cardsOnDom = (array) => {
+  let domString = "";
+  for (const pet of array) {
+    domString += `for (const pet of pets) {
+      // CARD FROM BOOTSTRAP: https://getbootstrap.com/docs/5.1/components/card/#example Removed the button
+          <img src=${pet.imageUrl} class="card-img-top" alt=${pet.name}>
+          <div class="card-body">
+            <h5 class="card-title">${pet.name}</h5>
+            <p class="card-text">${pet.specialSkill}</p>
+            <p>Type: ${pet.type}</p>
+            <p>color: ${pet.color}</p>
+          </div>
+        </div>`;
+    }
+    renderToDom("#app", domString);
+  }
